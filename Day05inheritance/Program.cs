@@ -7,11 +7,12 @@ account2.DisplayAccountType();
 account3.DisplayAccountType();
 account2.Deposit(500m);
 account3.Deposit(200m);
+account2.Withdraw(100m);
 
 Console.WriteLine($"HolderNames1  {account1.HolderName},and balance :{account1.Balance:F2}");
-Console.WriteLine($"HolderNames1  {account2.HolderName},and balance :{account2.Balance:F2}");
+Console.WriteLine($"HolderNames2  {account2.HolderName},and balance :{account2.Balance:F2}");
 
-Console.WriteLine($"HolderNames1  {account3.HolderName},and balance :{account3.Balance:F2}");
+Console.WriteLine($"HolderNames3  {account3.HolderName},and balance :{account3.Balance:F2}");
 public class BankAccount
 {
     public string HolderName { get; private set; }
@@ -31,6 +32,14 @@ public class BankAccount
     {
         Console.WriteLine("This is a bank Account");
     }
+    public void Withdraw(decimal amount)
+    {
+        if(amount > 0 && Balance>=amount)
+        {
+            Balance -= amount;
+        }
+    }
+
 }
 
 public class SavingsAccount: BankAccount
@@ -43,6 +52,7 @@ public class SavingsAccount: BankAccount
     {
         Console.WriteLine("This is a Savings Account");
     }
+    
 }
 public class CheckingAccount : BankAccount
 {
